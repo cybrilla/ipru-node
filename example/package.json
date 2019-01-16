@@ -1,0 +1,17 @@
+{
+  "name": "iprud",
+  "version": "1.0.0",
+  "description": "ICICI Prudential Client SDK Example",
+  "main": "index.js",
+  "scripts": {
+    "start": "node-dev index.js"
+  },
+  "author": "Cybrilla",
+  "license": "ISC",
+  "dependencies": {
+    "express": "4.16.4"
+  },
+  "devDependencies": {
+    "node-dev": "3.1.3"
+  }
+}
