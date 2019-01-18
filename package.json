@@ -9,9 +9,8 @@
   "author": "Cybrilla",
   "license": "ISC",
   "dependencies": {
-    "oauth-1.0a": "2.2.5",
+    "oauth-signature": "^1.5.0",
     "request": "2.88.0",
-    "ursa": "0.9.4",
     "xml2js": "0.4.19"
   }
 }

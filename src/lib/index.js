@@ -1,9 +1,6 @@
-var https = require('https')
-const OAuth = require('oauth-1.0a');
 var utils = require('./utils/utils')
 var getPem = require('./utils/rs_to_pem');
-var ursa = require('ursa');
-var crypto = require('crypto');
+
 
 
 
@@ -33,19 +30,8 @@ function IprudClient(options) {
   this._consumerSecret = options.consumerSecret;
   this._modulus =  parsedObject.RSAKeyValue.Modulus[0];
   this._exponent =  parsedObject.RSAKeyValue.Exponent[0];
+  // TODO assert certificate generated is valid
   this._pem =  getPem( this._modulus,  this._exponent);
-  this._crt =  ursa.createPublicKeyFromComponents(new Buffer(this._modulus), new Buffer(this._exponent));
-  ursa.assertPublicKey(this._crt);
-  this._oauth = OAuth({
-    consumer: {
-      key:  options.consumerKey,
-      secret: options.consumerSecret
-    },
-    signature_method: 'HMAC-SHA1',
-    hash_function(base_string, key) {
-      return crypto.createHmac('sha1', key).update(base_string).digest('base64');
-    }
-  });
   this._intialized = true;
   return this;
 }
